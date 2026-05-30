@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyunsoo Chung — AI Engineer</title>
+<meta name="description" content="Hyunsoo Chung — AI Engineer at CUTBACK building agentic computer-vision systems for automated video editing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --text:#1a1a1a; --muted:#555; --faint:#888;
+    --border:#e6e6e6; --soft:#fafafa; --link:#0b5fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    line-height:1.7; font-size:16px; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--link);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+
+  /* nav */
+  nav{border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);z-index:10}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+  nav .logo{font-weight:700;color:var(--text)}
+  nav .links{display:flex;gap:22px;font-size:14.5px}
+  nav .links a{color:var(--muted)}
+  nav .links a:hover{color:var(--text);text-decoration:none}
+  @media(max-width:600px){nav .links{display:none}}
+
+  /* hero */
+  header{padding:70px 0 50px;border-bottom:1px solid var(--border)}
+  .hero-top{display:flex;align-items:center;gap:24px;margin-bottom:18px}
+  .avatar{width:96px;height:96px;border-radius:50%;border:1px solid var(--border);flex:none;object-fit:cover}
+  @media(max-width:520px){.hero-top{gap:18px}.avatar{width:74px;height:74px}}
+  header h1{font-size:34px;font-weight:700;letter-spacing:-.01em}
+  header .role{margin-top:10px;font-size:17px;color:var(--muted)}
+  header .role a{font-weight:600}
+  header .tag{margin-top:18px;font-size:16px;color:var(--muted)}
+  header .tag b{color:var(--text);font-weight:600}
+  .chips{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:13px;color:var(--muted);background:var(--soft);border:1px solid var(--border);padding:5px 12px;border-radius:6px}
+  .cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;font-size:15px}
+
+  /* sections */
+  section{padding:46px 0;border-bottom:1px solid var(--border)}
+  h2{font-size:21px;font-weight:700;margin-bottom:22px;letter-spacing:-.01em}
+  p+p{margin-top:14px}
+  .muted{color:var(--muted)}
+
+  /* affiliations */
+  .aff{list-style:none;display:block;width:100%}
+  .aff li{padding:18px 0;border-bottom:1px solid var(--border)}
+  .aff li:last-child{border-bottom:none}
+  .aff .r1{display:flex;align-items:baseline;flex-wrap:wrap}
+  .aff .org{font-weight:700;font-size:16.5px;letter-spacing:-.01em}
+  .aff .org a{font-weight:700}
+  .aff .note{font-weight:400;font-size:16.5px;color:var(--muted);letter-spacing:-.01em}
+  .aff .note::before{content:"  ·  ";color:var(--faint);font-weight:400}
+  .aff .when{margin-left:auto;padding-left:14px;font-size:14px;font-weight:600;color:var(--muted);white-space:nowrap}
+  .aff .field{margin-top:18px}
+  .aff .lbl{display:block;font-size:14.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--text)}
+  .aff .val{display:block;margin-top:5px;font-size:14px;color:var(--muted);line-height:1.65}
+  .aff .val.lead{color:var(--text);font-weight:500}
+  .logos{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;margin:30px 0 8px;padding:22px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .logos img{opacity:.85;transition:opacity .2s}
+  .logos a:hover img{opacity:1}
+  .subhead{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin:28px 0 14px}
+  #about .aff+.subhead{margin-top:30px}
+  @media(max-width:480px){.aff .r1{flex-wrap:wrap}.aff .when{flex-basis:100%;margin-top:2px}}
+
+  /* about list */
+  ol.about-list{margin:0;padding-left:24px;display:grid;gap:14px}
+  ol.about-list li{padding-left:6px}
+  ol.about-list li::marker{color:var(--faint);font-weight:600}
+
+  /* how i work */
+  ol.steps{list-style:none;counter-reset:s;display:grid;gap:16px}
+  ol.steps li{counter-increment:s;padding-left:40px;position:relative}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;
+    width:26px;height:26px;border:1px solid var(--border);border-radius:50%;
+    display:grid;place-items:center;font-size:13px;font-weight:600;color:var(--muted)}
+  ol.steps b{font-weight:600}
+  ol.steps .muted{color:var(--muted)}
+
+  /* tech stack */
+  .stack{display:grid;gap:16px}
+  .stack .gl{font-size:13px;color:var(--faint);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+  .tags{display:flex;flex-wrap:wrap;gap:7px}
+  .tag{font-size:14px;color:var(--text);background:var(--soft);border:1px solid var(--border);padding:5px 11px;border-radius:6px}
+
+  /* projects */
+  .projects{display:grid;gap:20px}
+  .proj{display:block;color:inherit}
+  .proj:hover{text-decoration:none}
+  .proj .ph{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .proj h3{font-size:17px;font-weight:600;color:var(--link)}
+  .proj .badge{font-size:11px;font-weight:600;color:var(--faint);border:1px solid var(--border);padding:2px 7px;border-radius:4px}
+  .proj p{color:var(--muted);margin-top:5px;font-size:15px}
+  .proj .meta{margin-top:7px;font-size:13px;color:var(--faint)}
+
+  /* contact */
+  #contact p{color:var(--muted)}
+  .social{margin-top:16px;display:flex;gap:18px;flex-wrap:wrap;font-size:15px}
+
+  footer{padding:28px 0 50px;color:var(--faint);font-size:13.5px}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <span class="logo">Hyunsoo Chung</span>
+  <span class="links">
+    <a href="#about">About</a>
+    <a href="#work">How I Work</a>
+    <a href="#stack">Stack</a>
+    <a href="#projects">Projects</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </span>
+</div></nav>
+
+<header><div class="wrap">
+  <div class="hero-top">
+    <img class="avatar" src="https://github.com/hyunsoochung-portfolio.png?size=200" alt="Hyunsoo Chung">
+    <div>
+      <h1>Hi, I'm Hyunsoo</h1>
+      <p class="role"><b>AI Engineer</b> @ <a href="https://www.linkedin.com/company/cutback-video/posts/?feedView=all">CUTBACK</a> · <b>CS student</b> (on leave) @ <a href="https://en.snu.ac.kr">Seoul National University</a></p>
+    </div>
+  </div>
+  <p class="tag">Building <b>agentic computer-vision systems for automated video editing</b> — in production. Full-stack developer who ships web apps end-to-end, deeply interested in <b>startups &amp; entrepreneurship</b>.</p>
+  <div class="cta">
+    <a href="#projects">View projects ↓</a>
+    <a href="https://github.com/hyunsoochung-portfolio" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</div></header>
+
+<section id="about"><div class="wrap">
+  <h2>About</h2>
+  <ol class="about-list">
+    <li>I build because I love it — you'll often find me still deep in a problem at 2–3 a.m. or across the weekend, and I wouldn't have it any other way. I'm a <b>startup person at heart</b>: I get genuinely excited about hard technical problems, and I like the messy early stage where the plan keeps changing and there's never quite enough time — that's where I do my best work.</li>
+    <li>I treat every part of the job as <b>learning</b>, so I take ownership of whatever I work on as if it were my own and give every problem my full effort.</li>
+    <li>The value I prize most at a company is <b>brilliant colleagues</b> — I do my best work next to people who push me, and I care just as much about being a great teammate in return: keeping people in the loop, sharing what I know openly, and stepping up to lead when something needs an owner.</li>
+    <li>Above all I care about the <b>people who use what I build</b> — I start from real needs, design around them, and turn what I learn into clear writing, demos, and tools that make the next person's path easier.</li>
+  </ol>
+
+  <div class="logos">
+    <a href="https://www.linkedin.com/company/cutback-video/posts/?feedView=all" target="_blank" rel="noopener"><img src="assets/cutback.png" alt="CUTBACK" height="38"></a>
+    <a href="https://en.snu.ac.kr" target="_blank" rel="noopener"><img src="assets/snu.png" alt="Seoul National University" height="44"></a>
+    <a href="https://github.com/wafflestudio" target="_blank" rel="noopener"><img src="assets/wafflestudio.png" alt="Wafflestudio" height="38"></a>
+    <a href="https://deepest.ai" target="_blank" rel="noopener"><img src="assets/deepest.png" alt="Deepest" height="38"></a>
+  </div>
+
+  <h3 class="subhead">Experience</h3>
+  <ul class="aff">
+    <li><div class="r1"><span class="org"><a href="https://www.linkedin.com/company/cutback-video/posts/?feedView=all" target="_blank" rel="noopener">CUTBACK</a></span><span class="note">AI video-editing startup</span><span class="when">Jan 2026 – Present</span></div><div class="field"><span class="lbl">Role</span><span class="val lead">AI Engineer</span></div><div class="field"><span class="lbl">What I did</span><span class="val">Building a production video-editing agent with <b>vision models &amp; visual embeddings</b> (DINOv2, OpenCV) alongside <b>VLMs &amp; LLMs</b> — I own the <b>multi-camera switching</b> and <b>personalization</b> agents. I also own the serving stack end-to-end: the models sit behind <b>async FastAPI</b> services, long-running video jobs are offloaded to a <b>task queue</b> with dedicated <b>GPU inference workers</b>, media streams through <b>S3</b>, and everything ships as <b>Docker</b> containers on <b>AWS</b> behind CI/CD.</span></div></li>
+    <li><div class="r1"><span class="org"><a href="https://github.com/wafflestudio" target="_blank" rel="noopener">Waffle Studio</a></span><span class="note">A dev team building web services for SNU community</span><span class="when">Aug 2025 – Jan 2026</span></div><div class="field"><span class="lbl">Role</span><span class="val lead">Web Developer</span></div><div class="field"><span class="lbl">What I did</span><span class="val">Shipped full-stack web products end-to-end — a second-hand marketplace and an internship-listing platform (SNU Intern).</span></div></li>
+  </ul>
+
+  <h3 class="subhead">Education &amp; Research</h3>
+  <ul class="aff">
+    <li><div class="r1"><span class="org"><a href="https://en.snu.ac.kr" target="_blank" rel="noopener">Seoul National University</a></span><span class="when">Mar 2024 – Present</span></div><div class="field"><span class="lbl">Field</span><span class="val lead">Computer Science</span></div><div class="field"><span class="lbl">Notes</span><span class="val">3rd year · currently on leave of absence (3학년 휴학).</span></div></li>
+    <li><div class="r1"><span class="org"><a href="https://www.korea.edu" target="_blank" rel="noopener">Korea University</a></span><span class="when">Mar 2022 – Feb 2024</span></div><div class="field"><span class="lbl">Field</span><span class="val lead">Biomedical Engineering</span></div><div class="field"><span class="lbl">Notes</span><span class="val">Dropped out.</span></div></li>
+    <li><div class="r1"><span class="org"><a href="https://deepest.ai" target="_blank" rel="noopener">Deepest</a></span><span class="when">Mar 2026 – Present</span></div><div class="field"><span class="lbl">Field</span><span class="val lead">Research · Member</span></div><div class="field"><span class="lbl">Notes</span><span class="val">AI / ML / DL research society — studied ML/DL foundations and built &amp; trained models from scratch (CNNs, RNNs, Transformers) through hands-on projects.</span></div></li>
+  </ul>
+
+  <h3 class="subhead">Activities &amp; Projects</h3>
+  <ul class="aff">
+    <li><div class="r1"><span class="org"><a href="https://snuvc-venture-consulting.vercel.app" target="_blank" rel="noopener">SNUVC</a></span><span class="when">Oct 2025 – Jan 2026</span></div><div class="field"><span class="lbl">Role</span><span class="val lead">Accelerator</span></div><div class="field"><span class="lbl">What I did</span><span class="val">Accelerated early-stage student founders hands-on. To help non-technical teams ship software, I <b>set up simpler dev environments for them and coached them on getting the most out of agentic AI tools</b> — lowering the barrier to building. Worked closely with founders and their teams to connect them with leading domestic &amp; global VCs, and turned fast-moving conversations into practical next steps. Engaged startup communities at <b>CES 2026</b> for networking and insight. <b>Awarded the SNU 2026 CES Project Encouragement Prize.</b></span></div></li>
+    <li><div class="r1"><span class="org"><a href="https://github.com/hyunsoochung-portfolio/Nudge_ai" target="_blank" rel="noopener">Nudge AI</a></span><span class="when">Sep 2025 – Nov 2025</span></div><div class="field"><span class="lbl">Role</span><span class="val lead">Project / Tech Lead · Team of 3</span></div><div class="field"><span class="lbl">What I did</span><span class="val">Built a product end-to-end: an AI that calls children on a parent's behalf to coach financial sense — a child app, a parent dashboard, a real-time AI-call flow, and a landing page.</span></div></li>
+  </ul>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <h2>How I Work</h2>
+  <ol class="steps">
+    <li><b>Define the problem</b> <span class="muted">— I frame what actually needs solving before touching any code.</span></li>
+    <li><b>Talk to the customer</b> <span class="muted">— I interview the people who'll use it to pin the problem down precisely and understand their real needs, not my assumptions.</span></li>
+    <li><b>Define the answer first</b> <span class="muted">— I nail down what the right output looks like for a given input (a ground-truth set, labels, or a target design) and develop against that answer key — a test-driven approach where the goal is fixed before the implementation.</span></li>
+    <li><b>Design &amp; build</b> <span class="muted">— I turn that understanding into an approach and implement it end-to-end, building toward the answer key until the system matches it.</span></li>
+    <li><b>Iterate on two signals</b> <span class="muted">— I refine against both the <b>answer key from step 3</b> and real <b>user feedback</b>. Each round I measure the system's output against the labeled ground-truth set (and the target quality bar), find where it falls short, and close that gap — while putting it in front of users so the qualitative read and the quantitative score pull in the same direction.</span></li>
+    <li><b>Optimize cost &amp; latency</b> <span class="muted">— once it works, I make it cheap and fast enough to run for real.</span></li>
+    <li><b>Maintain &amp; safeguard</b> <span class="muted">— I wire the answer key into CI as a regression suite so my code or upstream changes can't silently break behavior, add production monitoring and drift detection, and feed real-world failures back into the evaluation set so the test bar keeps rising.</span></li>
+    <li><b>Share what worked</b> <span class="muted">— when an approach or technique proves out, I write it up so it outlives the one project: a clear doc others can build on, a walkthrough for the team, and onboarding material that gets new and junior engineers productive fast. Good patterns should spread, not stay in my head.</span></li>
+  </ol>
+</div></section>
+
+<section id="stack"><div class="wrap">
+  <h2>Tech Stack</h2>
+  <p class="muted" style="margin-top:-8px;margin-bottom:22px"><b style="color:var(--text)">Software / AI Development</b> · Problem Solving · Leadership · Communication</p>
+  <div class="stack">
+    <div><div class="gl">Languages</div><div class="tags"><span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">Java</span></div></div>
+    <div><div class="gl">AI / ML</div><div class="tags"><span class="tag">PyTorch</span><span class="tag">Keras</span><span class="tag">LangGraph</span><span class="tag">OpenCV</span></div></div>
+    <div><div class="gl">Frontend</div><div class="tags"><span class="tag">React</span><span class="tag">HTML5</span><span class="tag">CSS3</span></div></div>
+    <div><div class="gl">Backend &amp; Infra</div><div class="tags"><span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">AWS</span></div></div>
+    <div><div class="gl">Tools</div><div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Notion</span><span class="tag">Slack</span><span class="tag">MCP</span></div></div>
+  </div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <h2>Featured Projects</h2>
+  <div class="projects">
+    <a class="proj" href="https://github.com/hyunsoochung-portfolio/agentic-video-editing" target="_blank" rel="noopener">
+      <div class="ph"><h3>agentic-video-editing</h3><span class="badge">Flagship</span></div>
+      <p>Agentic computer-vision pipeline for automated multi-camera video editing — AI-driven shot analysis and camera/cut switching, with an algorithm core tuned agentically by LLMs.</p>
+      <div class="meta">Computer Vision · GPT-5 · DINOv2 · OpenCV · Agentic AI</div>
+    </a>
+    <a class="proj" href="https://github.com/hyunsoochung-portfolio/agentic-ai-frameworks" target="_blank" rel="noopener">
+      <div class="ph"><h3>agentic-ai-frameworks</h3></div>
+      <p>Hands-on practice with each major agentic-AI framework (OpenAI Agents SDK, CrewAI, Google ADK, plus a framework-free baseline), each written up as a step-by-step walkthrough on my blog so the next developer picking up the stack can follow the path.</p>
+      <div class="meta">OpenAI Agents SDK · CrewAI · Google ADK · RAG · MCP</div>
+    </a>
+    <a class="proj" href="https://github.com/hyunsoochung-portfolio/Nudge_ai" target="_blank" rel="noopener">
+      <div class="ph"><h3>Nudge AI</h3><span class="badge">Product</span></div>
+      <p>A product I built end-to-end: an AI that phones children on a parent's behalf to coach financial sense and good habits — child app, parent dashboard, a real-time AI-call flow, and a landing page.</p>
+      <div class="meta">React · Product · AI Calls</div>
+    </a>
+    <a class="proj" href="https://github.com/hyunsoochung-portfolio/secondhand-market-server" target="_blank" rel="noopener">
+      <div class="ph"><h3>secondhand-market</h3></div>
+      <p>Second-hand marketplace I worked on full-stack — live auctions with realtime bidding, in-app chat, virtual-currency wallet (deposit / withdraw / transfer), multi-image listings with drag-to-reorder, region-based browsing, and Google OAuth sign-in.</p>
+      <div class="meta">Live auctions · Real-time chat · Virtual wallet · Region browsing</div>
+    </a>
+    <a class="proj" href="https://github.com/hyunsoochung-portfolio/snu-intern-web" target="_blank" rel="noopener">
+      <div class="ph"><h3>snu-intern-web</h3></div>
+      <p>Internship discovery platform for SNU students I shipped full-stack — filter and sort listings by role / industry / recruiting status, bookmark roles, build a profile with CV upload, and sign in to keep state across sessions.</p>
+      <div class="meta">Filtering · Bookmarks · Auth · CV upload</div>
+    </a>
+    <a class="proj" href="https://github.com/hyunsoochung-portfolio/ml-projects" target="_blank" rel="noopener">
+      <div class="ph"><h3>ML / DL fundamentals</h3></div>
+      <p>R&D projects where I make prediction, vision, language, and forecasting models on public datasets — each with proper sweeps, ablations, and a per-project design-choice writeup. (<a href="https://github.com/hyunsoochung-portfolio/dl-projects">dl-projects</a>)</p>
+      <div class="meta">scikit-learn · XGBoost · TensorFlow / Keras · Hugging Face</div>
+    </a>
+  </div>
+</div></section>
+
+<section id="blog"><div class="wrap">
+  <h2>Writing</h2>
+  <p>I write a <a href="https://note24432.tistory.com" target="_blank" rel="noopener">technical blog</a> because I genuinely enjoy <b>making hard things approachable</b>. Agentic AI moves fast and the frameworks can feel intimidating, so I write the guide I wish I'd had — for developers who want to build with these tools but don't know where to start.</p>
+  <p class="muted">My north star is the <b>reader's experience</b>: every post is written so someone can actually follow along and ship something working, not just nod along. I share the full setup and runnable code, explain the <i>why</i> behind each decision, and lay out a step-by-step path from the fundamentals up — turning what I learn into content that helps other developers move faster and adopt new tools with confidence.</p>
+  <p><a href="https://note24432.tistory.com" target="_blank" rel="noopener">Read the blog →</a></p>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2>Contact</h2>
+  <p>Open to opportunities and collaborations. The fastest way to reach me is email.</p>
+  <div class="social">
+    <a href="mailto:hyunsoo3318@snu.ac.kr">Email</a>
+    <a href="https://www.linkedin.com/in/hyunsoo-chung-0a030b370" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/hyunsoochung-portfolio" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://note24432.tistory.com" target="_blank" rel="noopener">Blog</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">© 2026 Hyunsoo Chung</div></footer>
+
+</body>
+</html>
